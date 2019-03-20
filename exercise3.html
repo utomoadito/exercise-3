@@ -37,7 +37,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
-                                <div style="">
+                                <div>
                                     <div style="padding:10px;">
                                         <select name="filter_select" id="filter_select" onchange="prosesFilter()">
                                             <option>Pilih Filter</option>
@@ -279,7 +279,6 @@
                 }
                 ]
             }
-
             var nomor = 0;
             // var orbitals = [];
             data.results.forEach(function(result){
@@ -296,16 +295,10 @@
                         return orbit.orbital_period > 300;
                     });
                     console.log(dataFilter);
-                    dataOrbital = {
-                        "count": 61, 
-                        "next": "https://swapi.co/api/planets/?page=3", 
-                        "previous": "https://swapi.co/api/planets/?page=1", 
-                        "results": dataFilter
-                    }
                     document.getElementById('data-content').innerHTML = "";
                     
                     var nomor = 0;
-                    dataOrbital.results.forEach(function(result){
+                    dataFilter.forEach(function(result){
                         nomor++;
                         var content_row = "<tr><td>"+nomor+"</td><td>"+result.name+"</td><td>"+result.rotation_period+"</td><td>"+result.orbital_period+"</td><td>"+result.diameter+"</td><td>"+result.climate+"</td><td>"+result.gravity+"</td><td>"+result.terrain+"</td><td>"+result.surface_water+"</td><td>"+result.population+"</td><td>"+result.residents+"</td><td>"+result.films+"</td><td>"+result.created+"</td><td>"+result.edited+"</td><td>"+result.url+"</td></tr>";
                         document.getElementById('data-content').innerHTML += content_row;
@@ -315,16 +308,10 @@
                     var dataFilter = data.results.filter(function(climates){
                         return climates.climate == "hot";
                     });
-                    dataClimate = {
-                        "count": 61, 
-                        "next": "https://swapi.co/api/planets/?page=3", 
-                        "previous": "https://swapi.co/api/planets/?page=1", 
-                        "results": dataFilter
-                    }
                     document.getElementById('data-content').innerHTML = "";
                     
                     var nomor = 0;
-                    dataClimate.results.forEach(function(result){
+                    dataFilter.forEach(function(result){
                         nomor++;
                         var content_row = "<tr><td>"+nomor+"</td><td>"+result.name+"</td><td>"+result.rotation_period+"</td><td>"+result.orbital_period+"</td><td>"+result.diameter+"</td><td>"+result.climate+"</td><td>"+result.gravity+"</td><td>"+result.terrain+"</td><td>"+result.surface_water+"</td><td>"+result.population+"</td><td>"+result.residents+"</td><td>"+result.films+"</td><td>"+result.created+"</td><td>"+result.edited+"</td><td>"+result.url+"</td></tr>";
                         document.getElementById('data-content').innerHTML += content_row;
@@ -341,11 +328,6 @@
                     });
                 }
             }
-            // var pilots = data.results;
-            // var rebels = pilots.filter(function (pilot) {
-            //     return pilot.orbital_period > 300;
-            // });
-            // console.log(rebels);
         </script>
     </body>
 </html>
